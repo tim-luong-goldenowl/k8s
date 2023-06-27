@@ -19,3 +19,24 @@ spec:
         image: thailuong/api-server:latest
         ports:
         - containerPort: 3000
+        env:
+          - name: USER_NAME
+            valueFrom:
+              secretKeyRef:
+                name: postgresql-creds
+                key: USER_NAME
+          - name: DB_NAME
+            valueFrom:
+              secretKeyRef:
+                name: postgresql-creds
+                key: DB_NAME
+          - name: DB_HOST
+            valueFrom:
+              secretKeyRef:
+                name: postgresql-creds
+                key: DB_HOST
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: postgresql-creds
+                key: POSTGRES_PASSWORD
